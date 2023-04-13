@@ -28,20 +28,10 @@
         <span>商品小类管理</span>
       </el-menu-item>
     </el-sub-menu>
-    <el-sub-menu index="6">
-      <template #title>
-        <el-icon><management /></el-icon>
-        <span>商品数据管理图</span>
-      </template>
-      <el-menu-item index="pricePicture">
-        <el-icon><tickets /></el-icon>
-        <span>商品价格图</span>
-      </el-menu-item>
-      <el-menu-item index="salesPicture">
-        <el-icon><management /></el-icon>
-        <span>商品库存图</span>
-      </el-menu-item>
-    </el-sub-menu>
+    <el-menu-item index="salesPicture">
+      <el-icon><management /></el-icon>
+      <span>商品管理数据图</span>
+    </el-menu-item>
     <el-menu-item index="product">
       <el-icon><tickets /></el-icon>
       <span>商品管理</span>

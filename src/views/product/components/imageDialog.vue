@@ -1,10 +1,12 @@
 <template>
+
   <el-dialog
     :model-value="imageDialogVisible"
     title="商品图片更换"
     width="30%"
     @close="handleClose"
-    center>
+    center
+  >
     <el-form ref="formRef" :model="form" label-width="100px" style="text-align: center">
       <el-upload
         :headers="headers"
@@ -12,26 +14,39 @@
         :action="getServerUrl()+'/admin/product/uploadImage'"
         :show-file-list="false"
         :on-success="handleAvatarSuccess"
-        :before-upload="beforeAvatarUpload"> 
-        <img v-if="imageUrl" :src="imageUrl" class="avatar" />
+        :before-upload="beforeAvatarUpload"
+      > <img v-if="imageUrl" :src="imageUrl" class="avatar" />
         <el-icon v-else class="avatar-uploader-icon"><plus /></el-icon>
       </el-upload>
+
+
     </el-form>
+
     <template #footer>
+
       <span class="dialog-footer">
-        <el-button type="primary" @click="handleConfirm">确认更换</el-button>
+
+        <el-button type="primary" @click="handleConfirm"
+        >确认更换</el-button
+        >
       </span>
+
     </template>
+
   </el-dialog>
+
 </template>
 
 <script setup>
 import { defineEmits,ref ,defineProps,watch} from 'vue'
-import axios, { getServerUrl } from "@/util/axios";
+import axios,{getServerUrl} from "@/util/axios";
 import { ElMessage  } from "element-plus";
 import { Plus } from '@element-plus/icons-vue'
 
 const emits=defineEmits(['update:modelValue','initProductList'])
+
+
+
 const props=defineProps({
   id:{
     type:Number,
@@ -50,14 +65,23 @@ const imageUrl=ref("")
 const headers=ref({
   token:window.sessionStorage.getItem('token')
 })
+
+
 const imageSrc=ref("")
+
+
+
 watch(
   ()=>props.id,
   ()=>{
     console.log("id=="+props.id);
     let id=props.id;
     form.value.id=id;
+
     imageSrc.value=getServerUrl()+'/image/product/'+form.value.image;
+
+
+
   },
   {deep:true,immediate:true}
 )
@@ -74,11 +98,14 @@ const beforeAvatarUpload = (file) => {
   }
   return isJPG && isLt2M
 }
+
 const handleAvatarSuccess = (res) => {
  console.log(res.data)
   imageUrl.value=getServerUrl()+res.data.src;
   form.value.proPic=res.data.title;
 }
+
+
 const handleConfirm = async() => {
   let result=await axios.post("admin/product/saveImage",form.value);
   let data=result.data;
@@ -98,7 +125,8 @@ const handleClose = () => {
 
 </script>
 
-<style lang="scss" scoped>
+<style >
+
 .avatar-uploader .el-upload {
   border: 1px dashed #d9d9d9;
   border-radius: 6px;

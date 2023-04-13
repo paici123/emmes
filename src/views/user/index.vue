@@ -8,7 +8,7 @@
           v-model="queryForm.query">
         </el-input>
       </el-col>
-      <el-button type="button" :icon="Search" @click="initUserList">
+      <el-button :icon="Search" @click="initUserList">
         搜索
       </el-button>
     </el-row>

@@ -6,9 +6,11 @@
     width="30%"
     @close="handleClose">
     <el-form ref="formRef" :model="form" label-width="100px" style="text-align: center" :rules="rules">
+
       <el-form-item label="排列序号" prop="sort">
         <el-input v-model="form.sort" style="width: 100px"/>
       </el-form-item>
+
       <el-upload
         :headers="headers"
         class="avatar-uploader"
@@ -19,6 +21,7 @@
       > <img v-if="imageUrl" :src="imageUrl" class="avatar" />
         <el-icon v-else class="avatar-uploader-icon"><plus /></el-icon>
       </el-upload>
+
       <el-form-item>
         <el-button type="primary"  @click="handleConfirm()">添加</el-button>
       </el-form-item>
@@ -30,14 +33,21 @@
           <img :src="getServerUrl()+'/image/productSwiperImgs/'+scope.row.image" width="80" height="80"/>
         </template>
       </el-table-column>
+
       <el-table-column prop="sort" label="排列序号" width="100" />
+
       <el-table-column prop="action" label="操作" width="100" >
         <template v-slot="scope">
           <el-button type="danger" :icon="Delete" @click="handleDelete(scope.row.id)"></el-button>
         </template>
+
       </el-table-column>
+
     </el-table>
+
+
   </el-dialog>
+
 </template>
 
 <script setup>

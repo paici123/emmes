@@ -30,14 +30,9 @@ const routes = [{
         component: () => import('../views/smallType/index')
       },
       { 
-        path: '/pricePicture',
-        name: '商品价格图',
-        component: () => import('../views/pricePicture/index')
-      },
-      { 
         path: '/salesPicture',
         name: '商品销售图',
-        component: () => import('../views/salesPicture/index')
+        component: () => import('../views/PIChart/index')
       },
       { 
         path: '/product',
@@ -52,7 +47,7 @@ const routes = [{
       {
         path: '/modifyPassword',
         name: '修改密码',
-        component: () => import('../views/modifyPassword/index')
+        component: () => import('../views/mup/index')
       },
     ]
   },
