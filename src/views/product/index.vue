@@ -178,13 +178,10 @@ const handleDelete = (id) => {
 
     })
 }
-
-
-// const typeFormatter = (row) => {
-//   return row.type.name
-// }
-
-
+//商品类别
+const typeFormatter = (row) => {
+  return row.type.name
+}
 
 const hotChangeHandle = async (row) => {
   console.log("val="+row.id+","+row.hot);

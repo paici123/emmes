@@ -8,7 +8,7 @@
     </el-row>
     <el-table :data="tableData" stripe style="width: 100%">
       <el-table-column prop="orderNo" label="订单号" width="250" fixed/>
-      <el-table-column prop="wxUserInfo" label="用户昵称" width="300" :formatter="wxUserInfoNickNameFormatter" />
+      <el-table-column prop="wxUserInfo" label="用户昵称" width="300" :formatter="wxUserInfoNickName" />
       <el-table-column prop="totalPrice" label="订单总价" width="100" />
       <el-table-column prop="status" label="订单状态" width="100" :formatter="statusFormatter"/>
       <el-table-column prop="createDate" label="订单创建日期" width="200" />
@@ -162,13 +162,21 @@ const handleOrderStatus = (id,status) => {
 
     })
 }
-
 //获取用户昵称的函数=>就是客户通过登录小程序获取到微信昵称
-const wxUserInfoNickNameFormatter = (row) => {
-  // console.log(row.wxUserInfo.nickName);
-  // return row.wxUserInfo.nickName;
+const wxUserInfoNickName = (row) => {
+  if (row.wxUserInfo && row.wxUserInfo.nickName) { 
+    let nickName = row.wxUserInfo.nickName; 
+    console.log(nickName);
+    return nickName
+  } 
+  else { // 输出打印的值 
+    console.log('wxUserInfo is null or nickName is undefined')
+  }
+  // return row.wxUserInfo.nickName 直接报错
+  //报错原因是因为获取不到微信用户登录的信息，并不能存放到数据库,就算有存放到数据的也是一串乱码
+  //wxUserInfo 的值有可能是null的。
 }
-
+//订单状态
 const statusFormatter = (row) => {
   let status=row.status;
   switch (status) {
@@ -180,7 +188,6 @@ const statusFormatter = (row) => {
       return "退款/退货"
   }
 }
-
 
 </script>
 
