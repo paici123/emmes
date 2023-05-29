@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    欢迎使用，Java1234微信小程序商城后台管理
+    欢迎使用，基于微信小程序的家电商城后台管理系统
   </div>
   <dev class="homeImg">
     <img src="../../assets/home.png"/>

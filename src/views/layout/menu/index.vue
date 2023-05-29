@@ -30,7 +30,7 @@
     </el-sub-menu>
     <el-menu-item index="salesPicture">
       <el-icon><management /></el-icon>
-      <span>商品管理数据图</span>
+      <span>商品销售数据图</span>
     </el-menu-item>
     <el-menu-item index="product">
       <el-icon><tickets /></el-icon>

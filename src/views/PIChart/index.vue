@@ -34,7 +34,7 @@ const initProductList=async()=>{
   // 绘制图表
   myChart.setOption({
     title: {
-      text: '商品价格库存图'
+      text: '商品销售价格数据图'
     },
     tooltip: {
       trigger:'axis'
